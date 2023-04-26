@@ -1,0 +1,2 @@
+{:paths ["src" "resources"]
+ :deps {d3/d3 {:git/tag "7.8.4" :git/sha "37b1960"}}}

@@ -17,12 +17,6 @@
          `(.style ~selection ~k# ~v#))
      ~selection))
 
-(defmacro $ready
-  "Call forms on document ready, if you have jQuery on the page"
-  [& forms]
-  `(.ready (js/jQuery "document")
-           #(do ~@forms)))
-
 (defmacro shim [name]
   "Define proxies to native D3 methods.
    Provide a form for arities 1--3.

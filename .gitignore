@@ -8,4 +8,5 @@ build
 /cljs-d3
 resources/public/main.js
 resources/public/out
-
+/target
+/.clj-kondo

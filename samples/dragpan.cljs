@@ -2,8 +2,7 @@
   (:require [cljs-d3.scale :as scale]
             [jsd3.core :as jsd3])
   (:use [cljs-d3.core :only [p d3 select selectAll append append* style attr data enter
-                             on event]]
-        [clojure.string :only [join]]))
+                             on event]]))
 
 (let [m 14, n 14 ;;rows and columns
       the-data (take m (partition n (repeatedly rand)))
@@ -43,7 +42,7 @@
                   (append :svg {:id "minimap"
                                 :width 200, :height 200
                                 ;;Viewbox of minimap shows all the data
-                                :viewBox (join " " [0 0 dwidth dheight])}))]
+                                :viewBox (.join [0 0 dwidth dheight] " ")}))]
 
   ;;Fill the heatmap with squares
   (doseq [[row i] (map vector the-data (range))]
@@ -122,7 +121,4 @@
     (add-watch vb :update-heatmap-viewbox
                (fn [key vb old new]
                  (attr svg {:viewBox (join " " (map new [:x :y :width :height]))})
-                 (attr map-bounds (select-keys new [:x :y]))))
-
-
-    ))
+                 (attr map-bounds (select-keys new [:x :y]))))))
